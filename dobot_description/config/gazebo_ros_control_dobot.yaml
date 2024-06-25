@@ -1,0 +1,97 @@
+gazebo_ros_control:
+  pid_gains:
+    # these gains are used by the gazebo_ros_control plugin
+    joint1:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    joint2:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    joint3:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    joint4:
+      p: 4.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    joint5:
+      p: 20.0
+      i: 0.1
+      d: 0.0
+      i_clamp: 0.2
+      antiwindup: false
+      publish_state: true
+    
+
+    # the following gains are used by the gazebo_mimic_joint plugin
+    #joint2_1:
+    #  p: 20.0
+    #  i: 0.1
+    #  d: 0.0
+    #  i_clamp: 0.2
+    #  antiwindup: false
+    #  publish_state: true
+    #joint3_1:
+    #  p: 20.0
+    #  i: 0.1
+    #  d: 0.0
+    #  i_clamp: 0.2
+    #  antiwindup: false
+    #  publish_state: true
+    #joint2_2:
+    #  p: 20.0
+    #  i: 0.1
+    #  d: 0.0
+    #  i_clamp: 0.2
+    #  antiwindup: false
+    #  publish_state: true
+    #joint3_2:
+    #  p: 20.0
+    #  i: 0.1
+    #  d: 0.0
+    #  i_clamp: 0.2
+    #  antiwindup: false
+    #  publish_state: true
+    #joint2_3:
+    #  p: 20.0
+    #  i: 0.1
+    #  d: 0.0
+    #  i_clamp: 0.2
+    #  antiwindup: false
+    #  publish_state: true
+    #joint2_4:
+    #  p: 20.0
+    #  i: 0.1
+    #  d: 0.0
+    #  i_clamp: 0.2
+    #  antiwindup: false
+    #  publish_state: true
+    #joint3_3:
+    #  p: 20.0
+    #  i: 0.1
+    #  d: 0.0
+    #  i_clamp: 0.2
+    #  antiwindup: false
+    #  publish_state: true
+    #joint3_4:
+    #  p: 20.0
+    #  i: 0.1
+    #  d: 0.0
+    #  i_clamp: 0.2
+    #  antiwindup: false
+    #  publish_state: true

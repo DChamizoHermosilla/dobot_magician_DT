@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  	<!-- ros_control plugin -->
+  	<gazebo>
+    		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      			<legacyModeNS>true</legacyModeNS>
+    		</plugin>
+	</gazebo>
+
+	
+	<!-- MIMIC JOINTS -->
+ 		
+  	<gazebo>
+    		<plugin name="mimic_plugin1" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+      			<joint>joint2</joint>
+      			<mimicJoint>joint2_1</mimicJoint>
+      			<multiplier>-1.0</multiplier>
+    		</plugin>
+  	</gazebo>
+  
+		
+	<gazebo>
+    		<plugin name="mimic_plugin2" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+      			<joint>joint3</joint>
+      			<mimicJoint>joint3_1</mimicJoint>
+      			<multiplier>-1.0</multiplier>
+		</plugin>
+	</gazebo>
+
+	
+        <gazebo>
+                <plugin name="mimic_plugin3" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+                        <joint>joint5</joint>
+                        <mimicJoint>joint5_1</mimicJoint>
+                        <multiplier>1.0</multiplier>
+                </plugin>
+        </gazebo>
+
+	
+		<!-- Decoration links-->
+	<!--
+	<gazebo>
+                <plugin name="mimic_plugin4" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+                        <joint>joint3</joint>
+                        <mimicJoint>joint3_2</mimicJoint>
+                        <multiplier>1.0</multiplier>
+                </plugin>
+	</gazebo>
+
+	
+	<gazebo>
+                <plugin name="mimic_plugin5" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+                        <joint>joint2</joint>
+                        <mimicJoint>joint2_2</mimicJoint>
+                        <multiplier>1.0</multiplier>
+                </plugin>
+        </gazebo>
+	
+	
+        <gazebo>
+                <plugin name="mimic_plugin6" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+                        <joint>joint3</joint>
+                        <mimicJoint>joint3_3</mimicJoint>
+                        <multiplier>-1.0</multiplier>
+                </plugin>
+        </gazebo>
+
+	
+        <gazebo>
+                <plugin name="mimic_plugin7" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+                        <joint>joint2</joint>
+                        <mimicJoint>joint2_3</mimicJoint>
+                        <multiplier>1.0</multiplier>
+                </plugin>
+	</gazebo>
+
+	
+        <gazebo>
+                <plugin name="mimic_plugin8" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+                        <joint>joint2</joint>
+                        <mimicJoint>joint2_4</mimicJoint>
+                        <multiplier>-1.0</multiplier>
+                </plugin>
+        </gazebo>
+
+	
+        <gazebo>
+                <plugin name="mimic_plugin9" filename="libroboticsgroup_gazebo_mimic_joint_plugin.so">
+                        <joint>joint3</joint>
+                        <mimicJoint>joint3_4</mimicJoint>
+                        <multiplier>1.0</multiplier>
+                </plugin>
+        </gazebo>
+	-->
+
+	<!-- VISUAL -->
+	<gazebo reference="arm">
+    		<visual name='visual'>
+     			<material>
+       				<script>
+         				<uri>file://media/materials/scripts/gazebo.material</uri>
+         				<name>Gazebo/Grey</name>
+       				</script>
+     			</material>
+    		</visual>
+  	</gazebo>
+  
+		
+	<gazebo reference="forearm">
+    		<visual name='visual'>
+     			<material>
+       				<script>
+         				<uri>file://media/materials/scripts/gazebo.material</uri>
+         				<name>Gazebo/Grey</name>
+       				</script>
+     			</material>
+    		</visual>
+  	</gazebo>
+  
+	
+	<gazebo reference="wrist">
+    		<visual name='visual'>
+     			<material>
+       				<script>
+         				<uri>file://media/materials/scripts/gazebo.material</uri>
+         				<name>Gazebo/Grey</name>
+       				</script>
+     			</material>
+    		</visual>
+	</gazebo>
+
+		
+	<gazebo reference="gripper_body">
+                <visual name='visual'>
+                        <material>
+                                <script>
+                                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                                        <name>Gazebo/Grey</name>
+                                </script>
+                        </material>
+                </visual>
+	</gazebo>
+
+
+        <gazebo reference="tong_left">
+                <visual name='visual'>
+                        <material>
+                                <script>
+                                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                                        <name>Gazebo/Grey</name>
+                                </script>
+                        </material>
+                </visual>
+        </gazebo>
+
+
+	<gazebo reference="tong_right">
+                <visual name='visual'>
+                        <material>
+                                <script>
+                                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                                        <name>Gazebo/Grey</name>
+                                </script>
+                        </material>
+                </visual>
+	</gazebo>
+
+
+		<!-- Decoration links -->
+	<!--
+	<gazebo reference="elipse">
+                <visual name='visual'>
+                        <material>
+                                <script>
+                                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                                        <name>Gazebo/Grey</name>
+                                </script>
+                        </material>
+                </visual>
+        </gazebo>
+
+	
+        <gazebo reference="bone_elipse">
+                <visual name='visual'>
+                        <material>
+                                <script>
+                                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                                        <name>Gazebo/Grey</name>
+                                </script>
+                        </material>
+                </visual>
+	</gazebo>
+
+	
+        <gazebo reference="bone_arm">
+                <visual name='visual'>
+                        <material>
+                                <script>
+                                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                                        <name>Gazebo/Grey</name>
+                                </script>
+                        </material>
+                </visual>
+        </gazebo>
+
+	
+        <gazebo reference="union_arm">
+                <visual name='visual'>
+                        <material>
+                                <script>
+                                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                                        <name>Gazebo/Grey</name>
+                                </script>
+                        </material>
+                </visual>
+	</gazebo>
+
+	
+        <gazebo reference="bone_forearm">
+                <visual name='visual'>
+                        <material>
+                                <script>
+                                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                                        <name>Gazebo/Grey</name>
+                                </script>
+                        </material>
+                </visual>
+	</gazebo>
+	-->
+
+	<!-- CAMERA -->
+	<gazebo reference="camera_link">
+                <material>Gazebo/White</material>
+                <sensor name="camera" type="camera">
+                        <pose> 0 0 0 0 0 0 </pose>
+                        <visualize>true</visualize>
+                        <update_rate>10</update_rate>
+                        <camera name="camera">
+                                <horizontal_fov>1.089</horizontal_fov>   <!--horizontal field of view (in rad)-->
+                                <image>
+                                        <format>R8G8B8</format>  <!--8 byts of Red, Green and Blue-->
+                                        <width>640</width>
+                                        <height>480</height>
+                                </image>
+                                <clip>
+                                        <near>0.01</near>  <!--See as close as 1 cm-->
+                                        <far>8.0</far>     <!--See as far as 8 m-->
+                                </clip>
+                        </camera>
+                        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+                                <frameName>camera_link_optical</frameName>
+                                <!--Even though the plugin is attached to 'camera_link', the frame associated is-->
+                                <!--'camera_link_optical' so when it publishes the image data, the image data is-->
+                                <!--associated with 'camera_link_optical', although we are using the link-->
+                                <!--'camera_link'-->
+                                <imageTopicName>image_raw</imageTopicName>
+                                <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+                                <cameraName>/dobot/camera</cameraName>
+                        </plugin>
+		</sensor>
+	</gazebo>
+
+
+
+
+</robot>

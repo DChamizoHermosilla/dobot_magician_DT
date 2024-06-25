@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: dobot_description
+    relative_path: urdf/dobot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/magician.srdf
+  CONFIG:
+    author_name: Dario Chamizo
+    author_email: dchami81@gmail.com
+    generated_timestamp: 1718202192

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Launch Rvizz -->
+  <!--node name="rviz" pkg="rviz" type="rviz" /-->
+
+  <!-- Load the robot -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find dobot_description)/urdf/dobot.urdf.xacro'" />
+
+  <!-- Spawn the robot directly in Rvizz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find dobot_description)/rviz/dobot.rviz" />
+
+
+  <!-- Send fake joint values -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  
+  <arg name="gui" default="true" />
+  <param name="use_gui" value="$(arg gui)" />
+  
+  
+</launch>

@@ -1,0 +1,40 @@
+<?xml version='1.0'?>
+<robot name='cube_1'>
+	<link name='world'/>
+	<joint name='world_joint' type='floating'>
+		<parent link='world'/>
+		<child link='cube'/>
+		<origin xyz='0 0 0' rpy='0 0 0'/>
+	</joint>
+	<link name='cube'>
+		<visual>
+			<origin xyz='0.02604722665003956 0.1477211629518312 0.015' rpy='0 0 0.5063891717921418'/>
+			<geometry>
+				<box size='0.03 0.03 0.03' />
+			</geometry>
+			<material name='Red'>
+				<color rgba='1 0 0 1' />
+			</material>
+		</visual>
+		<collision>
+			<origin xyz='0.02604722665003956 0.1477211629518312 0.015' rpy='0 0 0.5063891717921418'/>
+			<geometry>
+				<box size='0.03 0.03 0.03' />
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz='0.02604722665003956 0.1477211629518312 0.015' rpy='0 0 0.5063891717921418'/>
+			<mass value='0.03' />
+			<inertia 
+				ixx='4.5e-06' 
+				ixy='0.0' 
+				ixz='0.0' 
+				iyy='4.5e-06' 
+				iyz='0.0' 
+				izz='4.5e-06' />
+		</inertial>
+	</link>
+	<gazebo reference='cube'>
+		<material>Gazebo/Red</material>
+	</gazebo>
+</robot>

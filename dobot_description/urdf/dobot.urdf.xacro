@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.0-0-g9aa0fdb  Build Version: 1.5.7004.21443
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+
+<robot name="magician" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	    
+  	<xacro:include filename="$(find dobot_description)/urdf/dobot.gazebo" />
+  	<xacro:include filename="$(find dobot_description)/urdf/dobot_trans.xacro" /> 
+	
+	<xacro:property name="joint1_lower" value="-1.570796327"/>
+	<xacro:property name="joint1_upper" value="1.570796327"/>
+	<xacro:property name="joint2_lower" value="0"/>
+        <xacro:property name="joint2_upper" value="1.483529864"/>
+	<xacro:property name="joint3_lower" value="0"/>
+        <xacro:property name="joint3_upper" value="1.745329252"/>	
+	<xacro:property name="joint4_lower" value="-1.570796327"/>
+        <xacro:property name="joint4_upper" value="1.570796327"/>
+ 	<xacro:property name="joint5_lower" value="0"/>
+	<xacro:property name="joint5_upper" value="0.02"/>
+	
+	<material name="white">
+                <color rgba="1 1 1 1" />
+        </material>
+
+
+	<link name="world"/>
+
+
+	<link name="origin"/>
+	
+
+	<joint name="world_joint" type="fixed">
+   	 	<origin xyz="0 0 0" rpy="0 0 0" />
+    		<parent link="world" />
+    		<child link="origin" />
+    		<axis xyz="0 0 0" />
+  	</joint>
+
+
+	<link name="base">
+    		<inertial>
+			<origin xyz="-0.000406699 -0.000364555 0.026663954" rpy="0 0 0" />
+			<mass value="0.264204843750" />
+     	 		<inertia
+				ixx="0.000873183424"
+				ixy="-1.83300825E-06"
+				ixz="-5.1220777344E-08"
+				iyy="0.000847449600"
+				iyz="4.185195E-06"
+        			izz="0.001554581504" />
+    		</inertial>
+    		<visual>
+     			<origin xyz="0.069 0.06903 0.051" rpy="3.141593 0 -1.570796" />
+      			<geometry>
+        			<mesh filename="package://dobot_description/meshes/base.dae" />
+      			</geometry>
+      			<material name="">
+        			<color rgba="1 1 1 1" />
+      			</material>
+    		</visual>
+    		<collision>
+      			<origin xyz="0.069 0.06903 0.051" rpy="3.141593 0 -1.570796" />
+      			<geometry>
+        			<mesh filename="package://dobot_description/meshes/base.dae" />
+      			</geometry>
+    		</collision>
+  	</link>
+	
+
+	<joint name="base_joint" type="fixed">
+    		<origin xyz="0 0 0" rpy="0 0 0" />
+    		<parent link="origin" />
+    		<child link="base" />
+    		<axis xyz="0 0 0" />
+  	</joint>
+	
+
+	<link name="shoulder">
+    		<inertial>
+			<origin xyz="0.000313712 0.001053757 0.056294592" rpy="0 0 0" />
+			<mass value="0.53733725" />
+			<inertia
+				ixx="0.001830523008"
+				ixy="5.7502605E-06"
+				ixz="3.3040254E-05"
+				iyy="0.000922039872"
+				iyz="2.1950854E-05"
+				izz="0.001461953664" />
+    		</inertial>
+    		<visual>
+      			<origin xyz="0.069 0.06903 0" rpy="3.141593 0 -1.570796" />
+      			<geometry>
+        			<mesh filename="package://dobot_description/meshes/shoulder.dae" />
+      			</geometry>
+     	 		<material name="">
+        			<color rgba="1 1 1 1" />
+      			</material>
+    		</visual>
+    		<collision>
+      			<origin xyz="0.069 0.06903 0" rpy="3.141593 0 -1.570796" />
+      			<geometry>
+        			<mesh filename="package://dobot_description/meshes/shoulder.dae" />
+      			</geometry>
+    		</collision>
+  	</link>
+	
+
+	<joint name="joint1" type="revolute">
+    		<origin xyz="0 0 0.051" rpy="0 0 0" />
+    		<parent link="base" />
+    		<child link="shoulder" />
+    		<axis xyz="0 0 1" />
+		<limit 
+			lower="${joint1_lower}"
+      			upper="${joint1_upper}"
+      			effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+  	</joint>
+	
+
+	<link name="arm">
+		<inertial>
+                        <origin xyz="-0.062879635 0.036444382 0.002666960" rpy="0 0 0" />
+                        <mass value="0.093947523438" />
+                        <inertia
+                                ixx="8.0474312E-05"
+                                ixy="-2.236132656E-07"
+                                ixz="-4.17319875E-06"
+                                iyy="0.000266169232"
+                                iyz="2.51564475E-06"
+                                izz="0.000299244192" />
+                </inertial>
+                <visual>
+                        <origin xyz="0.003065374 -0.110998115 0.06903" rpy="-0.698131701 1.570796327 -1.570796327" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/arm_structure.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="0.003065374 -0.110998115 0.06903" rpy="-0.698131701 1.570796327 -1.570796327" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/arm_structure.dae" />
+                        </geometry>
+                </collision>
+        </link>
+
+
+        <joint name="joint2" type="revolute">
+                <origin xyz="0 0 0.086999874" rpy="-1.570796327 1.570796327 0" />
+                <parent link="shoulder" />
+                <child link="arm" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${joint2_lower}"
+                        upper="${joint2_upper}"
+                        effort="6"
+                        velocity="1.570796" />
+                <dynamics damping="0.25" friction="0.25"/>
+        </joint>
+
+	 			
+        <link name="fake_link1">
+                <inertial>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <mass value="0.025" />
+                        <inertia
+                                ixx="2.5E-4"
+                                ixy="0"
+                                ixz="0"
+                                iyy="2.5E-4"
+                                iyz="0"
+                                izz="2.5E-4" />
+                </inertial>
+	</link>
+
+
+	<joint name="joint2_1" type="revolute">
+		<origin xyz="-0.134999185 0 0" rpy="0 0 0" />
+		<parent link="arm" />
+                <child link="fake_link1" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="-${joint2_upper}"
+			upper="-${joint2_lower}"
+                        effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+                <mimic joint="joint2" multiplier="-1" offset="0"/>
+        </joint>
+		
+		
+        <link name="forearm">
+                <inertial>
+                        <origin xyz="-0.054115891 0.036343987 0.000045962" rpy="0 0 0" />
+                        <mass value="0.063845093750" />
+                        <inertia
+                                ixx="4.3627868E-05"
+                                ixy="-8.2319485E-06"
+                                ixz="-3.2654475E-07"
+                                iyy="0.000181050608"
+                                iyz="1.464839063E-07"
+                                izz="0.000202882272" />
+                </inertial>
+                <visual>
+                        <origin xyz="-0.04733249 -0.170619932 0.06903" rpy="0.466735827 1.570796327 -1.570796327" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/forearm_structure.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="-0.04733249 -0.170619932 0.06903" rpy="0.466735827 1.570796327 -1.570796327" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/forearm_structure.dae" />
+                        </geometry>
+                </collision>
+        </link>
+
+ 	
+        <joint name="joint3" type="revolute">
+		<origin xyz="0 0 0" rpy="0 0 1.396263402" />
+		<parent link="fake_link1" />
+                <child link="forearm" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${joint3_lower}"
+                        upper="${joint3_upper}"
+                        effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+        </joint>
+		
+        <link name="wrist">
+                <inertial>
+                        <origin xyz="-0.052118221 0.011854436 0.000061119" rpy="0 0 0" />
+                        <mass value="0.0675455625" />
+                        <inertia
+				ixx="2.0539562E-05"
+				ixy="1.1851567E-05"
+				ixz="-4.5501863281E-08"
+				iyy="5.0530672E-05"
+                                iyz="-3.7855835938E-08"
+                                izz="6.6391708E-05" />
+                </inertial>
+                <visual>
+                        <origin xyz="0.165782069 -0.107522813 0.06903" rpy="0 1.570796327 -1.570796327" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/wrist.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="0.165782069 -0.107522813 0.06903" rpy="0 1.570796327 -1.570796327" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/wrist.dae" />
+                        </geometry>
+                </collision>
+	</link>
+
+
+        <joint name="joint3_1" type="revolute">
+		<origin xyz="-0.14700014 0 0" rpy="0 0 0.174532925" />
+                <parent link="forearm" />
+                <child link="wrist" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${-1*joint3_upper}"
+                        upper="${-1*joint3_lower}"
+                        effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+                <mimic joint="joint3" multiplier="-1" offset="0"/>
+        </joint>
+	
+		
+        <link name="gripper_body">
+                <inertial>
+                        <origin xyz="0.000074916 0.000025971 -0.022940840" rpy="0 0 0" />
+                        <mass value="0.012127704102" />
+                        <inertia
+                                ixx="3.9699175E-06"
+                                ixy="-1.04692E-13"
+                                ixz="1.727318555E-08"
+                                iyy="3.39021175E-06"
+                                iyz="-3.26953E-13"
+                                izz="1.0754565E-06" />
+                </inertial>
+                <visual>
+                        <origin xyz="-0.225554410 0.06903 -0.092813586" rpy="0 3.141592654 1.570796327" />
+
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/gripper_body.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="-0.225554410 0.06903 -0.092813586" rpy="0 3.141593 1.570796" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/gripper_body.dae" />
+                        </geometry>
+                </collision>
+        </link>
+
+
+        <joint name="joint4" type="revolute">
+		<origin xyz="-0.059772341 -0.014709228 0" rpy="-1.570796327 3.141592654 0" />
+		<parent link="wrist" />
+                <child link="gripper_body" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${joint4_lower}"
+                        upper="${joint4_upper}"
+                        effort="6"
+			velocity="1.570796" />
+        </joint>
+
+	
+        <link name="tong_left">
+                <inertial>
+                        <origin xyz="-0.007646646 -0.006969645 -0.002041771" rpy="0 0 0" />
+                        <mass value="0.005982816895" />
+                        <inertia
+				ixx="1.73376E-06"
+				ixy="3.3150575E-07"
+				ixz="-5.353973125E-07"
+				iyy="1.64147625E-06"
+				iyz="1.299258828E-07"
+				izz="1.499253875E-06" />
+                </inertial>
+                <visual>
+                        <origin xyz="0.032011802 -0.002344217 -0.054450966" rpy="-1.570796327 -1.570796327 0.004868" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/tong_left.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="0.032011802 -0.002344217 -0.054450966" rpy="-1.570796327 -1.570796327 0.004868" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/tong_left.dae" />
+                        </geometry>
+                </collision>
+        </link>
+
+
+        <joint name="joint5" type="prismatic">
+                <origin xyz="0.000232613 -0.005404984 -0.04778957" rpy="1.570796327 0 0" />
+                <parent link="gripper_body" />
+                <child link="tong_left" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${joint5_lower}"
+                        upper="${joint5_upper}"
+                        effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+        </joint>
+
+	
+        <link name="tong_right">
+                <inertial>
+                        <origin xyz="-0.020318691 0.000282597 0.023979198" rpy="0 0 0" />
+                        <mass value="0.040058562500" />
+                        <inertia
+				ixx="1.3401245E-05"
+				ixy="-7.0954825E-07"
+				ixz="1.71945925E-06"
+				iyy="1.3964473E-05"
+				iyz="9.8886125E-07"
+				izz="7.8976275E-06" />
+                </inertial>
+                <visual>
+                        <origin xyz="0.032011800 0.002344207 0.043649019" rpy="1.570796327 1.570796327 0.004867" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/tong_right.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="0.032011800 0.002344207 0.043649019" rpy="1.570796327 1.570796327 0.004867" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/tong_right.dae" />
+                        </geometry>
+                </collision>
+        </link>
+
+
+        <joint name="joint5_1" type="prismatic">
+                <origin xyz="0.000232634 0.005396949 -0.047789578" rpy="-1.570796327 0 0" />
+                <parent link="gripper_body" />
+                <child link="tong_right" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${joint5_lower}"
+                        upper="${joint5_upper}"
+                        effort="6"
+                        velocity="1.5707906" />
+		<dynamics damping="0.25" friction="0.25"/>
+                <mimic joint="joint5" multiplier="1" offset="0"/>
+        </joint>
+
+
+	<link name="end_effector"/>
+
+
+	<joint name="end_effector_joint" type="fixed">
+                <origin xyz="0 0 -0.076769716" rpy="3.141592654 0 0" />
+                <parent link="gripper_body" />
+                <child link="end_effector" />
+                <axis xyz="0 0 0" />
+	</joint>
+
+
+	<link name="camera_link">
+		 <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+                        <mass value="0.001" />
+			<inertia 
+				ixx="1.5E-09" 
+				ixy="0" 
+				ixz="0"
+				iyy="8.333333E-10" 
+				iyz="0"
+				izz="8.333333E-10" />
+                </inertial>
+
+		<visual>
+                        <origin xyz="0.0005 0 0" rpy="0 0 0"/>
+                        <geometry>
+                                <box size="0.001 0.003 0.003"/>
+                        </geometry>
+                        <material name="white"/>
+                </visual>
+                <collision>
+                        <origin xyz="0.0005 0 0" rpy="0 0 0" />
+                        <geometry>
+                                <box size="0.001 0.003 0.003"/>
+                        </geometry>
+                </collision>
+	</link>
+
+
+        <joint name="camera_joint" type="fixed">
+                <parent link="gripper_body"/>
+                <child link="camera_link"/>
+                <origin xyz="0 0 -0.057765122" rpy="0 1.570796327 0"/>
+        </joint>
+	
+
+	<link name="camera_link_optical"></link>
+
+
+        <joint name="camera_optical_joint" type="fixed">
+                <parent link="camera_link"/>
+                <child link="camera_link_optical"/>
+                <origin xyz="0 0 0" rpy="-1.570796327 0 -1.570796327"/>
+        </joint>
+
+
+
+	<!-- Decoration links -->	
+	<!--
+	<link name="elipse">
+    		<inertial>
+			<origin xyz="-0.011382469 0.000021944 -0.010967204" rpy="0 0 0" />
+			<mass value="0.013230793945" />
+      			<inertia
+				ixx="9.679166875E-07"
+				ixy="-4.817291504E-09"
+				ixz="-4.176013125E-07"
+				iyy="4.3285085E-06"
+				iyz="-2.152251953E-09"
+				izz="4.635627E-06" />
+    		</inertial>
+    		<visual>
+      			<origin xyz="0.015001902 0.01499862 -0.012499999" rpy="0 0 3.141592654" />
+      			<geometry>
+        			<mesh filename="package://dobot_description/meshes/elipse.dae" />
+      			</geometry>
+     	 		<material name="">
+        			<color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+      			</material>
+    		</visual>
+    		<collision>
+      			<origin xyz="0.015001902 0.01499862 -0.012499999" rpy="0 0 3.141592654" />
+      			<geometry>
+        			<mesh filename="package://dobot_description/meshes/elipse.dae" />
+      			</geometry>
+    		</collision>
+  	</link>
+	
+
+        <joint name="joint3_2" type="revolute">
+		<origin xyz="0 0.001495286 0.086999874" rpy="-1.570796327 -0.174532925 0" />
+                <parent link="shoulder" />
+                <child link="elipse" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${joint3_lower}"
+                        upper="${joint3_upper}"
+                        effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+		<mimic joint="joint3" multiplier="1" offset="0"/>
+        </joint>
+	
+	
+	<link name="fake_link2">
+                <inertial>
+                        <origin xyz="0 0 0" rpy="0 0 0" />
+                        <mass value="0.0025" />
+                        <inertia
+                                ixx="2.5E-4"
+                                ixy="0"
+                                ixz="0"
+                                iyy="2.5E-4"
+                                iyz="0"
+                                izz="2.5E-4" />
+                </inertial>
+        </link>
+
+
+
+	<joint name="joint2_2" type="revolute">
+		<origin xyz="-0.043001164 0 -0.006499998" rpy="0 0 1.745329252" />
+		<parent link="elipse" />
+    		<child link="fake_link2" />
+    		<axis xyz="0 0 1" />
+    		<limit
+			lower="${joint2_lower}"
+      			upper="${joint2_upper}"
+      			effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>	
+    		<mimic joint="joint2" multiplier="1" offset="0"/>
+  	</joint>
+	
+	
+	<link name="bone_elipse">
+    		<inertial>
+			<origin xyz="-0.079067047 -0.000082521 -0.003041033" rpy="0 0 0" />
+			<mass value="0.007562822754" />
+      			<inertia
+				ixx="1.203631406E-07"
+				ixy="-1.852308594E-08"
+				ixz="-2.150079219E-07"
+				iyy="1.7466796E-05"
+				iyz="-1.91887283E-10"
+        			izz="1.7507754E-05" />
+    		</inertial>
+    		<visual>
+      			<origin xyz="-0.013914916 -0.15050469 0.074034712" rpy="-0.6981317 1.570796327 -1.570796327" />
+      			<geometry>
+				<mesh filename="package://dobot_description/meshes/bone_elipse.dae" />
+      			</geometry>
+      			<material name="">
+        			<color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+      			</material>
+    		</visual>
+    		<collision>
+     	 		<origin xyz="-0.013914916 -0.15050469 0.074034712" rpy="-0.6981317 1.570796327 -1.570796327" />
+      			<geometry>
+        			<mesh filename="package://dobot_description/meshes/bone_elipse.dae" />
+      			</geometry>
+    		</collision>
+  	</link>
+	
+	
+	<joint name="joint3_3" type="revolute">
+    		<origin xyz="0 0 0" rpy="0 0 0" />
+    		<parent link="fake_link2" />
+    		<child link="bone_elipse" />
+    		<axis xyz="0 0 1" />
+    		<limit
+      			lower="${-1*joint3_upper}"
+      			upper="${-1*joint3_lower}"
+      			effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+    		<mimic joint="joint3" multiplier="-1" offset="0"/>
+  	</joint>
+	
+	
+        <link name="bone_arm">
+                <inertial>
+                        <origin xyz="-0.067504395 -0.000070100 0.002532891" rpy="0 0 0" />
+                        <mass value="0.006266518066" />
+                        <inertia
+                                ixx="8.220957031E-08"
+                                ixy="4.26397E-13"
+                                ixz="1.4666E-14"
+                                iyy="1.2537157E-05"
+                                iyz="-6.448E-15"
+                                izz="1.2592901E-05"/>
+                </inertial>
+                <visual>
+                        <origin xyz="-0.067504266 0.003929867 0.002499994" rpy="3.141592654 0 0" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/bone_arm.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="-0.067504266 0.003929867 0.002499994" rpy="3.141592654 0 0" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/bone_arm.dae" />
+                        </geometry>
+                </collision>
+        </link>
+	
+
+        <joint name="joint2_3" type="revolute">
+                <origin xyz="-0.038067106 -4E-06 0.107" rpy="-1.570796327 1.570796327 0" />
+                <parent link="shoulder" />
+                <child link="bone_arm" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${joint2_lower}"
+                        upper="${joint2_upper}"
+                        effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+                <mimic joint="joint2" multiplier="1" offset="0"/>
+	</joint>
+	
+	
+	<link name="union_arm">
+                <inertial>
+			<origin xyz="-0.036271415 -0.003786492 0.006586619" rpy="0 0 0" />
+                        <mass value="0.009790955078" />
+                        <inertia
+				ixx="1.32838375E-06"
+				ixy="5.439986875E-07"
+				ixz="-1.300148926E-08"
+				iyy="6.209614E-06"
+				iyz="-1.197970703E-07"
+                                izz="7.1867785E-06" />
+                </inertial>
+                <visual>
+                        <origin xyz="-0.003560779 -0.193669026 0.069034013" rpy="0 1.570796327 -1.570796327" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/union_arm.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="-0.003560779 -0.193669026 0.069034013" rpy="0 1.570796327 -1.570796327" />
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/union_arm.dae" />
+                        </geometry>
+                </collision>
+        </link>
+
+
+        <joint name="joint2_4" type="revolute">
+		<origin xyz="-0.134999185 0 0" rpy="0 0 1.570796327" />
+		<parent link="bone_arm" />
+                <child link="union_arm" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${-1*joint2_upper}"
+                        upper="${-1*joint2_lower}"
+                        effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+                <mimic joint="joint2" multiplier="-1" offset="0"/>
+        </joint>
+	
+	
+	<link name="bone_forearm">
+                <inertial>
+			<origin xyz="-0.086260162 0.000010522 0.001946563" rpy="0 0 0" />
+                        <mass value="0.008163498047" />
+                        <inertia
+				ixx="1.602970938E-07"
+				ixy="2.38570459E-09"
+				ixz="-2.894269375E-07"
+				iyy="2.209208E-05"
+				iyz="1.32095551E-10"
+                                izz="2.2093156E-05" />
+                </inertial>
+                <visual>
+                        <origin xyz="-0.030576818 -0.210205727 0.069033991" rpy="0.466875574 1.570796327 -1.570796327"/>
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/bone_forearm.dae" />
+                        </geometry>
+                        <material name="">
+                                <color rgba="0.501960784313725 0.501960784313725 0.501960784313725 1" />
+                        </material>
+                </visual>
+                <collision>
+                        <origin xyz="-0.030576818 -0.210205727 0.069033991" rpy="0.466875574 1.570796327 -1.570796327"/>
+                        <geometry>
+                                <mesh filename="package://dobot_description/meshes/bone_forearm.dae" />
+                        </geometry>
+                </collision>
+	</link>
+
+	
+        <joint name="joint3_4" type="revolute">
+		<origin xyz="-0.070869594 0.007802841 0" rpy="0 0 -0.174532925" />
+                <parent link="union_arm" />
+                <child link="bone_forearm" />
+                <axis xyz="0 0 1" />
+                <limit
+                        lower="${joint3_lower}"
+                        upper="${joint3_upper}"
+                        effort="6"
+			velocity="1.570796" />
+		<dynamics damping="0.25" friction="0.25"/>
+                <mimic joint="joint3" multiplier="1" offset="0"/>
+	</joint>
+	-->	
+
+</robot>

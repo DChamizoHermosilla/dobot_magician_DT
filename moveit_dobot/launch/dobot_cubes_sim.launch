@@ -1,0 +1,30 @@
+<?xml version='1.0'?>
+<launch>
+
+	<!-- Spawn empty world -->
+	<include file='$(find gazebo_ros)/launch/empty_world.launch'>
+		<arg name='paused' value='true'/>
+	</include>
+
+	<group ns='dobot'>
+		<include file='$(find dobot_description)/launch/world_dobot.launch' />
+		<include file = '$(find moveit_dobot)/launch/move_group.launch' />
+		<arg name='use_rviz' default='true' />
+		<include file='$(find moveit_dobot)/launch/moveit_rviz.launch' if='$(arg use_rviz)'>
+			<arg name='rviz_config' value='$(find moveit_dobot)/launch/moveit.rviz'/>
+		</include>
+	</group>
+
+	<group ns='cube_1'>
+		<include file='$(find dobot_description)/launch/spawn_cube_1.launch' />
+	</group>
+
+	<group ns='cube_2'>
+		<include file='$(find dobot_description)/launch/spawn_cube_2.launch' />
+	</group>
+
+	<group ns='cube_3'>
+		<include file='$(find dobot_description)/launch/spawn_cube_3.launch' />
+	</group>
+
+</launch>
