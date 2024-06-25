@@ -75,7 +75,7 @@ Asegúrese de tener instalados los siguientes paquetes antes de usar `moveit_dob
 
 ## Uso
 
-Para la simulación de movimientos del robot Dobot Magician siga estos pasos:
+Para la simulación de movimientos del robot Dobot Magician siga estos pasos (a continuación se indican secuencialmente los pasos y los comandos para ejecutarlos):
 
 1. Inicia el ROS master
 
